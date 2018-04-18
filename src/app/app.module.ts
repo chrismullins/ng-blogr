@@ -9,6 +9,7 @@ import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { ValidateEqualDirective } from './validate-equal.directive';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     SignupComponent,
     SigninComponent,
+    ValidateEqualDirective,
   ],
   imports: [
     BrowserModule,
