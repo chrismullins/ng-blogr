@@ -25,7 +25,7 @@
         #password="ngModel"
       >
     </div>
-    <button class="btn btn-primary" type="submit">Sign In</button>
+    <button class="btn btn-primary" [disabled]="!f.valid" type="submit">Sign In</button>
   </form>
 </div>
 </div>

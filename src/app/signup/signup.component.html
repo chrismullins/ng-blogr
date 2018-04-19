@@ -40,7 +40,7 @@
           [ngModelOptions]="{updateOn: 'change'}"
           >
       </div>
-      <button class="btn btn-primary" type="submit">Register</button>
+      <button class="btn btn-primary" [disabled]="!f.valid" type="submit">Register</button>
     </form>
   </div>
   </div>
