@@ -4,6 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { Observable } from 'rxjs/Observable';
+import { AlertService } from './alert/alert.service';
 
 @Injectable()
 export class AuthService {
@@ -12,7 +13,8 @@ export class AuthService {
 
   constructor(private afAuth: AngularFireAuth,
               private db: AngularFireDatabase,
-              private router: Router) {
+              private router: Router,
+              private alertService: AlertService) {
                 // this.afAuth.subscribe( (auth) => {
                 //   this.authState = auth;
                 // });
@@ -32,7 +34,7 @@ export class AuthService {
   }
 
   // Returns the authState observable (triggered on login/logout)
-  get currentUserObservable() : any {
+  get currentUserObservable(): any {
     return this.afAuth.authState;
   }
 
@@ -53,8 +55,11 @@ export class AuthService {
         this.authState = user
         this.updateUserData()
         this.router.navigate(['/']);
+        this.alertService.success('You\'ve been successfully registered!')
       })
-      .catch( err =>  console.log(err));
+      .catch( (err) =>  {
+        this.alertService.error(err);
+      });
   }
 
   emailLogin(email: string, password: string) {
@@ -64,7 +69,9 @@ export class AuthService {
         this.updateUserData()
         this.router.navigate(['/'])
       })
-      .catch( err => console.log(err));
+      .catch( (err) => {
+        this.alertService.error(err)
+      });
   }
 
   //// Helpers ////

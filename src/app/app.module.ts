@@ -12,9 +12,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { ValidateEqualDirective } from './validate-equal.directive';
 import { AuthService } from './auth.service';
+import { AlertService } from './alert/alert.service';
 import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AlertComponent } from './alert/alert.component';
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
     HomeComponent,
     SignupComponent,
     SigninComponent,
-    ValidateEqualDirective
+    ValidateEqualDirective,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
     AngularFireAuthModule,
     AngularFireDatabaseModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
